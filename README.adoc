@@ -1,3 +1,13 @@
 = Unofficial Gradle Plugin Portal
 
-TBD
+== How to Contribute
+
+ . Fork this repository.
+ . Copy any of the existing `plugin.html` files and rename it to the plugin's project name.
+ . Fill out the minimum information: Summary, Website, Author, Version and basic Usage.
+ . **Important** Detailed usage should not be added! That information should be already present at the project's website.
+ . Add an entry to `all.html`. Create a Lettered section if it does not exist.
+ . Add an entry to `categorized.html`. Use the same conventions from the plugin's main Task.
+ . Send a Pull Request when finished.
+
+If you're a plugin author then please consider pinging us whenever a new release is made, or better yet, send us a Pull Request with the updates ;-)
