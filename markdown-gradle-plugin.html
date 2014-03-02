@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Asciidoctor</title>
+    <title>Markdown</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -33,12 +33,49 @@
         </p>
 
     </header>
-      <section>
-        <h3>
-<a name="welcome" class="anchor" href="#welcome"><span class="octicon octicon-link"></span></a>Welcome</h3>
-<p><a href="http://gradle.org">Gradle</a> is the next generation build tool for the JVM. It has a booming plugin community, alas there's no official site (yet) where one can find information about all available plugins (other than those bundled with the standard distribution, see <a href="http://www.gradle.org/docs/current/userguide/userguide.html">here</a>). This site is an attempt to have a somewhat organized list of useful <a href="http://gradle.org">Gradle</a> plugins that do not ship with the standard distribution.</p>
-<p>Do you know of a plugin that's missing from this list? Drop us a line at <a href="http://twitter.com/aalmiray">@aalmiray</a> or better ye, send us a Pull Request as outlined <a href="https://github.com/aalmiray/gradle-plugins">here</a>.
-</p>
+    <section>
+        <h3><a name="summary" class="anchor"
+               href="#summary"><span
+                class="octicon octicon-link"></span></a>Summary</h3>
+
+        <p>
+            Provides a facility for converting Markdown into HTML, as well as converting HTML back into Markdown.<br/>
+        <table border="0">
+            <tbody>
+            <tr>
+                <th>Website</th>
+                <td><a href="https://github.com/aalmiray/markdown-gradle-plugin">https://github.com/aalmiray/markdown-gradle-plugin</a></td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td><a href="https://github.com/aalmiray">aalmiray</a></td>
+            </tr>
+            <tr>
+                <th>Version</th>
+                <td>0.1</td>
+            </tr>
+            </tbody>
+        </table>
+        </p>
+        <h3><a name="usage" class="anchor"
+               href="#usage"><span
+                class="octicon octicon-link"></span></a>Usage</h3>
+        <p>
+<pre>
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
+    }
+
+    dependencies {
+        classpath 'org.kordamp:markdown-gradle-plugin:0.1'
+    }
+}
+
+apply plugin: 'markdown'
+</pre>
+        </p>
     </section>
 
     <footer>
