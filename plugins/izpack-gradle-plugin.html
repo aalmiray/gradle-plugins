@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>License</title>
+    <title>IzPack</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -38,26 +38,25 @@
                href="#summary"><span
                 class="octicon octicon-link"></span></a>Summary</h3>
 
-<p>
-This plugin will scan and adapt your source files to include a provided header, e.g. a LICENSE file. By default it will scan every source set and report warnings. It will also create format tasks, which will properly format and apply the specified header. A bulk of the logic comes from the maven-license-plugin.
-</p>
-<p>This plugin will also report on the licenses of your dependencies.</p>
+        <p>
+The plugin provides a one-stop solution for packaging, distributing and deploying applications for the Java platform using <a href="http://izpack.org/">IzPack</a>.<br/>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/hierynomus/license-gradle-plugin">https://github.com/hierynomus/license-gradle-plugin</a></td>
+                <td><a href="https://github.com/bmuschko/gradle-izpack-plugin">https://github.com/bmuschko/gradle-izpack-plugin</a></td>
             </tr>
             <tr>
                 <th>Author</th>
-                <td><a href="https://github.com/hierynomus">hierynomus</a></td>
+                <td><a href="https://github.com/bmuschko">bmuschko</a></td>
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.7.0</td>
+                <td>0.2.3</td>
             </tr>
             </tbody>
         </table>
+        </p>
         <h3><a name="usage" class="anchor"
                href="#usage"><span
                 class="octicon octicon-link"></span></a>Usage</h3>
@@ -69,19 +68,25 @@ buildscript {
     }
 
     dependencies {
-        classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.7.0'
+        classpath 'org.gradle.api.plugins:gradle-izpack-plugin:0.2.3'
     }
 }
 
-apply plugin: 'license'
+apply plugin: 'izpack'
+
+dependencies {
+    izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
+}
+
+izpack {
+    baseDir = file("$buildDir/assemble/izpack")
+    installFile = file('installer/izpack/installer.xml')
+    outputFile = file("$buildDir/distributions/${project.name}-${version}-installer.jar")
+    compression = 'deflate'
+    compressionLevel = 9
+}
 </pre>
         </p>
-        <h3><a name="notes" class="anchor"
-               href="#notes"><span
-                class="octicon octicon-link"></span></a>Notes</h3>
-<ul>
-   <li>Latest release does not work with JDK6 (<a href="https://github.com/hierynomus/license-gradle-plugin/issues/35">#35</a>).</li>
-</ul>
     </section>
 
     <footer>
