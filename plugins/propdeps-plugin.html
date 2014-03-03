@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gretty</title>
+    <title>JavaFX</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -39,21 +39,21 @@
                 class="octicon octicon-link"></span></a>Summary</h3>
 
 <p>
-Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/servlet-API-3.0 and jetty-9/servlet-API-3.1.0.
+Provides additional <code>optional</code> and <code>provided</code> dependency configurations for Gradle along with Maven POM generation support.
 </p>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/akhikhl/gretty">https://github.com/akhikhl/gretty</a></td>
+                <td><a href="https://github.com/spring-projects/gradle-plugins/tree/master/propdeps-plugin">https://github.com/spring-projects/gradle-plugins/tree/master/propdeps-plugin</a></td>
             </tr>
             <tr>
                 <th>Author</th>
-                <td><a href="https://github.com/akhikhl">akhikhl</a></td>
+                <td><a href=" http://spring.io">http://spring.io</a></td>
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.0.12</td>
+                <td>0.0.1</td>
             </tr>
             </tbody>
         </table>
@@ -61,34 +61,26 @@ Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/
         <h3><a name="usage" class="anchor"
                href="#usage"><span
                 class="octicon octicon-link"></span></a>Usage</h3>
-<p>Setting up Gretty:<br/>
 <pre>
 buildscript {
     repositories {
-        jcenter()
+        maven { url 'http://repo.springsource.org/plugins-release' }
     }
-
     dependencies {
-        classpath 'org.akhikhl.gretty:gretty-plugin:0.0.12'
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.1'
     }
 }
 
-repositories {
-    jcenter()
-}
-
-apply plugin: 'war'
-apply plugin: 'gretty'
+apply plugin: 'propdeps'
 </pre>
         </p>
 <p>
-You may also define a more specific Jetty container with
+You may also define links to <code>maven</code>, <code>idea</code> and <code>eclipse</code> plugins:
 <ul>
-    <li><code>apply plugin: 'gretty7'</code></li>
-    <li><code>apply plugin: 'gretty8'</code></li>
-    <li><code>apply plugin: 'gretty9'</code></li>
+    <li><code>apply plugin: 'propdeps-maven'</code></li>
+    <li><code>apply plugin: 'propdeps-idea'</code></li>
+    <li><code>apply plugin: 'propdeps-eclipse'</code></li>
 </ul>
-</p>
     </section>
 
     <footer>
