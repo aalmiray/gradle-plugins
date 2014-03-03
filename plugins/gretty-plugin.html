@@ -64,28 +64,31 @@ Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/
 <p>Setting up Gretty:<br/>
 <pre>
 buildscript {
+    repositories {
+        jcenter()
+    }
 
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
-
-  apply plugin: 'maven'
-  
-  dependencies {
-    classpath 'org.akhikhl.gretty:gretty-plugin:+'
-  }
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty-plugin:0.0.12'
+    }
 }
 
 repositories {
-  mavenLocal()
-  mavenCentral()
+    jcenter()
 }
 
 apply plugin: 'war'
 apply plugin: 'gretty'
 </pre>
         </p>
+<p>
+You may also define a more specific Jetty container with
+<ul>
+    <li><code>apply plugin: 'gretty7'</code></li>
+    <li><code>apply plugin: 'gretty8'</code></li>
+    <li><code>apply plugin: 'gretty8'</code></li>
+</ul>
+</p>
     </section>
 
     <footer>
