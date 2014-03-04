@@ -53,7 +53,7 @@
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.9.6</td>
+                <td>0.9.8</td>
             </tr>
             </tbody>
         </table>
@@ -65,19 +65,17 @@
 <pre>
 buildscript {
     repositories {
-        ...
-        mavenCentral()
-        mavenRepo name: 'Bintray Gradle Plugins', url: 'http://dl.bintray.com/vermeulen-mp/gradle-plugins'
+        jcenter()
+        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
     }
     dependencies {
-        classpath "org.gradle.api.plugins:gradle-heroku:0.9.2"
+        classpath "org.gradle.api.plugins:gradle-heroku:0.9.8"
     }
 }
 
 
 apply plugin: 'heroku'
 
-...
 
 heroku {
     appName = 'some-unique-app-name'
