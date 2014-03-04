@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>JBake</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <script src="../javascripts/scale.fix.js"></script>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1 class="header">Gradle Plugins</h1>
+
+        <ul>
+            <li><a class="buttons"
+                   href="https://aalmiray.github.io/gradle-plugins/all.html">All</a>
+            </li>
+            <li><a class="buttons"
+                   href="https://aalmiray.github.io/gradle-plugins/categorized.html">Categorized</a>
+            </li>
+        </ul>
+
+        <p class="header">Maintained by <a class="header name"
+                                           href="https://github.com/aalmiray">aalmiray</a>
+        </p>
+
+    </header>
+    <section>
+        <h3><a name="summary" class="anchor"
+               href="#summary"><span
+                class="octicon octicon-link"></span></a>Summary</h3>
+
+        <p>This plugin allows rendering a site using <a href="http://www.jbake.org/">JBake</a> directly from Gradle.<br/>
+        <table border="0">
+            <tbody>
+            <tr>
+                <th>Website</th>
+                <td><a href="https://github.com/jbake-org/jbake-gradle-plugin">https://github.com/jbake-org/jbake-gradle-plugin</a></td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td><a href="https://github.com/jbake-org">JBake</a></td>
+            </tr>
+            <tr>
+                <th>Version</th>
+                <td>0.1-SNAPSHOT</td>
+            </tr>
+            </tbody>
+        </table>
+        </p>
+        <h3><a name="usage" class="anchor"
+               href="#usage"><span
+                class="octicon octicon-link"></span></a>Usage</h3>
+        <p>
+<pre>
+buildscript {
+  repositories {
+      jcenter()
+  }
+
+  dependencies {
+    classpath 'me.champeau.gradle:jbake-gradle-plugin:0.1-SNAPSHOT'
+
+    // optional, if you use asciidoctor markup
+    classpath 'org.asciidoctor:asciidoctor-java-integration:0.1.4'
+
+    // optional, if you use freemarker template engine
+    classpath 'org.freemarker:freemarker:2.3.19'
+  }
+}
+
+apply plugin: 'jbake'
+</pre>
+        </p>
+    </section>
+
+    <footer>
+        <p>
+            <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+                using the Dinky theme
+            </small>
+        </p>
+    </footer>
+</div>
+<!--[if !IE]>
+<script>fixScale(document);</script><![endif]-->
+
+</body>
+</html>
