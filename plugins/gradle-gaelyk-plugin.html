@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>gaelyk</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <script src="../javascripts/scale.fix.js"></script>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1 class="header">Gradle Plugins</h1>
+
+        <ul>
+            <li><a class="buttons"
+                   href="https://aalmiray.github.io/gradle-plugins/all.html">All</a>
+            </li>
+            <li><a class="buttons"
+                   href="https://aalmiray.github.io/gradle-plugins/categorized.html">Categorized</a>
+            </li>
+        </ul>
+
+        <p class="header">Maintained by <a class="header name"
+                                           href="https://github.com/aalmiray">aalmiray</a>
+        </p>
+
+    </header>
+    <section>
+        <h3><a name="summary" class="anchor"
+               href="#summary"><span
+                class="octicon octicon-link"></span></a>Summary</h3>
+
+        <p>
+The plugin provides tasks for managing <a href="http://gaelyk.appspot.com/">Gaelyk</a> projects in any given Gradle build. It applies <a href="https://github.com/bmuschko/gradle-gae-plugin">Gradle GAE plugin</a> and <a href="http://www.gradle.org/docs/current/userguide/groovy_plugin.html">Groovy plugin</a> to the project. It changes the configuration of <a href="https://github.com/musketyr/gradle-fatjar-plugin">FatJAR</a> and GAE plugins and of main source set to better fit Gaelyk application needs. Finally it adds some Gaelyk specific tasks.<br/>
+        <table border="0">
+            <tbody>
+            <tr>
+                <th>Website</th>
+                <td><a href="https://github.com/gaelyk/gradle-gaelyk-plugin">https://github.com/gaelyk/gradle-gaelyk-plugin</a></td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td><a href="https://github.com/gaelyk">gaelyk</a></td>
+            </tr>
+            <tr>
+                <th>Version</th>
+                <td>0.5</td>
+            </tr>
+            </tbody>
+        </table>
+        </p>
+        <h3><a name="usage" class="anchor"
+               href="#usage"><span
+                class="octicon octicon-link"></span></a>Usage</h3>
+        <p>
+<pre>
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.5'
+    }
+}
+apply plugin: 'gaelyk'
+</pre>
+        </p>
+    </section>
+
+    <footer>
+        <p>
+            <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a>
+                using the Dinky theme
+            </small>
+        </p>
+    </footer>
+</div>
+<!--[if !IE]>
+<script>fixScale(document);</script><![endif]-->
+
+</body>
+</html>
