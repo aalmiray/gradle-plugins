@@ -63,12 +63,10 @@ This plugin configures JavaCompile tasks to use the <a href="https://code.google
         <p>
 <pre>
 buildscript {
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.2'
-  }
+    repositories { jcenter() }
+    dependencies {
+        classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.2'
+    }
 }
 
 apply plugin: 'errorprone'

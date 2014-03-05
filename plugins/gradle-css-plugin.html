@@ -62,15 +62,12 @@
         <p>
 <pre>
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+    repositories { jcenter() }
     dependencies {
         classpath 'com.eriwen:gradle-css-plugin:1.8.1'
     }
 }
 
-// Invoke the plugin
 apply plugin: 'css'
 
 // Declare your sources

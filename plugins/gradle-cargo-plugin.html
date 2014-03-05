@@ -62,10 +62,7 @@ The plugin provides deployment capabilities for web applications to local and re
                 class="octicon octicon-link"></span></a>Usage</h3>
 <pre>
 buildscript {
-    repositories {
-        jcenter()
-    }
-
+    repositories { jcenter() }
     dependencies {
         classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.4'
     }
@@ -75,12 +72,9 @@ apply plugin: 'cargo'
 </pre>
 <p>You may  define a specific cargo version using the <code>cargo</code> configuration, for example</p>
 <pre>
-repositories {
-    jcenter()
-}
-
+repositories { jcenter() }
 dependencies {
-    def cargoVersion = '1.4.5'
+    String cargoVersion = '1.4.5'
     cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
           "org.codehaus.cargo:cargo-ant:$cargoVersion"
 }

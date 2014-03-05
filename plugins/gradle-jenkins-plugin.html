@@ -63,13 +63,12 @@ Gradle plugin to programmatically configure Jenkins jobs. This plugin allows you
         <p>
 <pre>
 buildscript {
-    repositories { mavenCentral() }
+    repositories { jcenter() }
     dependencies {
-            classpath('com.terrafolio:gradle-jenkins-plugin:0.4.0')
+        classpath 'com.terrafolio:gradle-jenkins-plugin:0.4.0'
     }
 }
 apply plugin: 'jenkins'
-
 </pre>
         </p>
     </section>

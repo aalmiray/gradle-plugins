@@ -63,11 +63,9 @@ This plugin allows you to deploy and manage applications with Gradle tasks. It i
         <p>
 <pre>
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+    repositories { jcenter() }
     dependencies {
-        classpath group: 'org.cloudfoundry', name: 'cf-gradle-plugin', version: '1.0.2'
+        classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.2'
     }
 }
 

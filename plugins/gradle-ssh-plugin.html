@@ -63,12 +63,10 @@ This plugin provides remote command execution and file transfer capabilities.<br
         <p>
 <pre>
 buildscript {
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath 'org.hidetake:gradle-ssh-plugin:0.2.8'
-  }
+    repositories { jcenter() }
+    dependencies {
+        classpath 'org.hidetake:gradle-ssh-plugin:0.2.8'
+    }
 }
 
 apply plugin: 'ssh'

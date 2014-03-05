@@ -62,16 +62,13 @@ Aiming to be the simplest way to manage your JavaScript in a build.<br/>
                 class="octicon octicon-link"></span></a>Usage</h3>
         <p>
 <pre>
-// Pull the plugin from Maven Central
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+    repositories { jcenter() }
     dependencies {
         classpath 'com.eriwen:gradle-js-plugin:1.9.0'
     }
 }
-// Invoke the plugin
+
 apply plugin: 'js'
 
 // Declare your sources

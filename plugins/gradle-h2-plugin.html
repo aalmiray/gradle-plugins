@@ -68,7 +68,7 @@ buildscript {
             name = 'GitHub'
             addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
         }
-        mavenCentral() // or alternatively your own maven resolver
+        jcenter()
     }
 
     dependencies {
@@ -77,7 +77,6 @@ buildscript {
     }
 }
 apply plugin: 'h2'
-
 </pre>
         </p>
     </section>

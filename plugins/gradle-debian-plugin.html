@@ -63,40 +63,37 @@ The plugin creates Debian/Ubuntu compatible packages from your Gradle artifacts.
         <p>
 <pre>
 buildscript {
-  repositories {
-    maven {
-      url "http://dl.bintray.com/gesellix/gradle-plugins"
+    repositories {
+      maven { url 'http://dl.bintray.com/gesellix/gradle-plugins' }
     }
-  }
-  dependencies {
-    classpath "de.gesellix:gradle-debian-plugin:12"
-  }
+    dependencies {
+        classpath 'de.gesellix:gradle-debian-plugin:12'
+    }
 }
 
 publishing {
-  publications {
-    webapp(MavenPublication) {
-      from components.web  // .war
+    publications {
+        webapp(MavenPublication) {
+            from components.web  // .war
+        }
     }
-  }
 }
 
 apply plugin: 'pkg-debian'
 
 debian {
-  packagename = "packagename"
-  publications = ['webapp']
-  controlDirectory = "/path/to/control"
-  changelogFile = "/path/to/changelog"
+    packagename = 'packagename'
+    publications = ['webapp']
+    controlDirectory = '/path/to/control'
+    changelogFile = '/path/to/changelog'
 
-  data {
-    def baseDir = "/path/to/data"
-    dir {
-      name = baseDir
-      exclusions = [
-          "etc/init.d/packagename"]
+    data {
+    def baseDir = '/path/to/data'
+        dir {
+            name = baseDir
+            exclusions = ['etc/init.d/packagename']
+        }
     }
-  }
 }
 </pre>
         </p>

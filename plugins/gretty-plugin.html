@@ -64,17 +64,10 @@ Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/
 <p>Setting up Gretty:<br/>
 <pre>
 buildscript {
-    repositories {
-        jcenter()
-    }
-
+    repositories { jcenter() }
     dependencies {
         classpath 'org.akhikhl.gretty:gretty-plugin:0.0.12'
     }
-}
-
-repositories {
-    jcenter()
 }
 
 apply plugin: 'war'

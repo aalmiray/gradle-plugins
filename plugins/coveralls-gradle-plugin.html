@@ -65,10 +65,7 @@ Send coverage data to <a href="http://coveralls.io">coveralls.io</a>.
 <p>Setting up <a href="gradle-cobertura-plugin.html">Cobertura</a>:<br/>
 <pre>
 buildscript {
-    repositories {
-        jcenter()
-    }
-
+    repositories { jcenter() }
     dependencies {
         classpath 'net.saliman:gradle-cobertura-plugin:2.2.2'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.2.5'
@@ -82,10 +79,7 @@ cobertura.coverageFormats = ['html', 'xml']
 <p>Setting up JaCoCo:<br/>
 <pre>
 buildscript {
-    repositories {
-        jcenter()
-    }
-
+    repositories { jcenter() }
     dependencies {
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.2.5'
     }

@@ -39,7 +39,7 @@
                 class="octicon octicon-link"></span></a>Summary</h3>
 
         <p>
-			This Gradle plugin allows for the administration and deployment of your Heroku application from the comfort of your Gradle project.
+            This Gradle plugin allows for the administration and deployment of your Heroku application from the comfort of your Gradle project.
         <br/>
         <table border="0">
             <tbody>
@@ -69,13 +69,11 @@ buildscript {
         maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
     }
     dependencies {
-        classpath "org.gradle.api.plugins:gradle-heroku:0.9.8"
+        classpath 'org.gradle.api.plugins:gradle-heroku:0.9.8'
     }
 }
 
-
 apply plugin: 'heroku'
-
 
 heroku {
     appName = 'some-unique-app-name'

@@ -62,10 +62,7 @@ The plugin provides deployment capabilities of web applications to an embedded T
                 class="octicon octicon-link"></span></a>Usage</h3>
 <pre>
 buildscript {
-    repositories {
-        jcenter()
-    }
-
+    repositories { jcenter() }
     dependencies {
         classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.0'
     }
@@ -75,12 +72,9 @@ apply plugin: 'tomcat'
 </pre>
 <p>You must also define a specific tomcat version using the <code>tomcat</code> configuration, for example</p>
 <pre>
-repositories {
-    jcenter()
-}
-
+repositories { jcenter() }
 dependencies {
-    def tomcatVersion = '7.0.11'
+    String tomcatVersion = '7.0.11'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
