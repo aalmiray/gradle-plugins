@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Cucumber</title>
+    <title>Watch</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -39,20 +39,20 @@
                 class="octicon octicon-link"></span></a>Summary</h3>
 
         <p>
-The gradle cucumber plugin provides the ability to run <a href="http://cukes.info/">cucumber</a> acceptance tests directly from a gradle build. The plugin utilizes the cucumber cli provided by the <a href="https://github.com/cucumber/cucumber-jvm">cucumber-jvm</a> project and should support any of the languages utilized in cucumber-jvm.<br/>
+Run predefined tasks whenever watched file patterns are added, changed or deleted.<br/>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/samueltbrown/gradle-cucumber-plugin">https://github.com/samueltbrown/gradle-cucumber-plugin</a></td>
+                <td><a href="https://github.com/bluepapa32/gradle-watch-plugin">https://github.com/bluepapa32/gradle-watch-plugin</a></td>
             </tr>
             <tr>
                 <th>Author</th>
-                <td><a href="https://github.com/samueltbrown">samueltbrown</a></td>
+                <td><a href="https://github.com/bluepapa32">bluepapa32</a></td>
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.5</td>
+                <td>0.1.1</td>
             </tr>
             </tbody>
         </table>
@@ -63,15 +63,19 @@ The gradle cucumber plugin provides the ability to run <a href="http://cukes.inf
         <p>
 <pre>
 buildscript {
-    repositories {
-        jcenter()
-    }
+    repositories { maven { url 'http://bluepapa32.github.io/maven/' } } 
+    dependencies { classpath 'com.bluepapa32.gradle.plugins:gradle-watch-plugin:0.1.1' }
+}
 
-    dependencies {
-        classpath 'com.github.samueltbrown:gradle-cucumber-plugin:0.5'
+apply plugin: 'watch'
+apply plugin: 'java'
+
+watch {
+    java {
+        files files('src/main/java')
+        tasks 'compileJava'
     }
 }
-apply plugin: 'cucumber'
 </pre>
         </p>
     </section>
