@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Heroku</title>
+    <title>Spawn</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -28,9 +28,7 @@
             </li>
         </ul>
 
-        <p class="header">Maintained by <a class="header name"
-                                           href="https://github.com/aalmiray">aalmiray</a>
-        </p>
+        <p class="header">Maintained by <a class="header name" href="https://github.com/aalmiray">aalmiray</a></p>
 
     </header>
     <section>
@@ -38,14 +36,14 @@
                href="#summary"><span
                 class="octicon octicon-link"></span></a>Summary</h3>
 
-        <p>
-            This Gradle plugin allows for the administration and deployment of your Heroku application from the comfort of your Gradle project.
+        <p>This plugin is used for starting and stopping UNIX command line processes from within your build.</p>
+		<p>A typical application of this plugin is for stopping and starting an embedded web server when running functional tests from within your build.</p>
         <br/>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/marcoVermeulen/gradle-heroku">https://github.com/marcoVermeulen/gradle-heroku</a></td>
+                <td><a href="https://github.com/marcoVermeulen/gradle-spawn-plugin">https://github.com/marcoVermeulen/gradle-spawn-plugin</a></td>
             </tr>
             <tr>
                 <th>Author</th>
@@ -53,7 +51,7 @@
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.9.8</td>
+                <td>0.5.2</td>
             </tr>
             </tbody>
         </table>
@@ -63,24 +61,28 @@
                 class="octicon octicon-link"></span></a>Usage</h3>
         <p>
 <pre>
-buildscript {
-    repositories {
-        jcenter()
-        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
+
+    import com.wiredforcode.gradle.spawn.*
+
+    buildscript {
+        repositories {
+            ...
+            maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
+        }
+        dependencies {
+            classpath 'com.wiredforcode:gradle-spawn-plugin:0.5.1'
+        }
     }
-    dependencies {
-        classpath "com.wiredforcode:gradle-heroku-plugin:1.0.0"
+
+    apply plugin: 'spawn'
+
+    task startServer(type: SpawnProcessTask, dependsOn: 'assemble') {
+        command "java -jar ${projectDir}/build/libs/zim-service.jar"
+        ready 'Started Application'
     }
-}
 
-apply plugin: 'heroku'
+    task stopServer(type: KillProcessTask)
 
-heroku {
-    appName = 'some-unique-app-name'
-
-    //get this from heroku
-    apiKey = 'my-api-key'
-}
 </pre>
         </p>
     </section>
