@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>VFS</title>
+    <title>Bintray</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -39,12 +39,13 @@
                 class="octicon octicon-link"></span></a>Summary</h3>
 
         <p>
-This plugin enables a Groovy DSL that wraps the <a href="http://commons.apache.org/proper/commons-vfs/">Apache VFS</a> libraries<br/>
+This is the unoffical plugin for <a href="https://bintray.com/">Bintray</a>. <br/>
+It supports Maven & Ivy style uploads to Bintray Maven repositories as well as uploads to Generic Bintray repositories.<br/>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/ysb33r/groovy-vfs">https://github.com/ysb33r/groovy-vfs</a></td>
+                <td><a href="https://github.com/ysb33r/bintray">https://github.com/ysb33r/bintray</a></td>
             </tr>
             <tr>
                 <th>Author</th>
@@ -52,7 +53,7 @@ This plugin enables a Groovy DSL that wraps the <a href="http://commons.apache.o
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.5</td>
+                <td>1.2</td>
             </tr>
             </tbody>
         </table>
@@ -62,25 +63,45 @@ This plugin enables a Groovy DSL that wraps the <a href="http://commons.apache.o
                 class="octicon octicon-link"></span></a>Usage</h3>
         <p>
 <pre>
-apply plugin: 'base'
-
 buildscript {
     repositories {
         jcenter()
-    }
-    dependencies {
-        classpath 'org.ysb33r.gradle:vfs-gradle-plugin:0.5'
-        classpath 'commons-httpclient:commons-httpclient:3.1'
+      }
+      dependencies {
+        classpath 'org.ysb33r.gradle:bintray:1.2'
+      }
+}
+
+apply plugin: 'bintray-publish'
+apply plugin : 'java'
+
+// Publishing to Maven Repo using old-style maven
+uploadArchives  {
+    repositories {
+ 		bintrayMavenDeployer {
+			username          'someBintrayUser'
+            apiKey            'SomeBintrayUsersApiKey'
+         	repoOwner         'ysb33r'
+         	repoName          'grysb33r'
+         	packageName       'someNewPackageToBePublished'
+            description       'This is an example to simplifying bintray publishing'
+            descUrl           'https://github.com/ysb33r/Gradle/blob/master/bintray/README.md'
+            tags              'gradle','bintray'
+       }
     }
 }
 
-apply plugin: 'vfs'
+// Publishing to a generic repository
+import org.ysb33r.gradle.bintray.BintrayGenericUpload
+task uploadArchives (type:BintrayGenericUpload ) {
+    username    'someBintrayUser'
+    apiKey      'SomeBintrayUsersApiKey'
+    repoOwner   'ysb33r'
+    repoName    'nanook'
+    packageName 'someNewPackageToBePublished'
 
-task copyReadme << {
-    vfs {
-        cp 'https://raw.github.com/ysb33r/groovy-vfs/master/README.md',
-           new File("${buildDir}/tmp/README.md")
-    }
+    // 'sources' can be called more than once
+    sources "${buildDir}/distributions/${applicationName}-${version}.tar"
 }
 </pre>
         </p>
