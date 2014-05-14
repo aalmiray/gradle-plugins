@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gretty</title>
+    <title>Git Clone</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -38,22 +38,21 @@
                href="#summary"><span
                 class="octicon octicon-link"></span></a>Summary</h3>
 
-<p>
-Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/servlet-API-3.0 and jetty-9/servlet-API-3.1.0.
-</p>
+<p>A simple task for cloning Git repos.</p>
+
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/akhikhl/gretty">https://github.com/akhikhl/gretty</a></td>
+                <td><a href="https://github.com/palominolabs/gradle-git-clone-task">https://github.com/palominolabs/gradle-git-clone-task</a></td>
             </tr>
             <tr>
                 <th>Author</th>
-                <td><a href="https://github.com/akhikhl">akhikhl</a></td>
+                <td><a href="https://github.com/marshallpierce">marshallpierce</a></td>
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.0.15</td>
+                <td>0.0.2</td>
             </tr>
             </tbody>
         </table>
@@ -61,27 +60,24 @@ Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/
         <h3><a name="usage" class="anchor"
                href="#usage"><span
                 class="octicon octicon-link"></span></a>Usage</h3>
-<p>Setting up Gretty:<br/>
 <pre>
 buildscript {
-    repositories { jcenter() }
-    dependencies {
-        classpath 'org.akhikhl.gretty:gretty-plugin:0.0.15'
-    }
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2'
+  }
 }
 
-apply plugin: 'war'
-apply plugin: 'gretty'
+task cloneSomeRepo(type: com.palominolabs.gradle.task.git.clone.GitCloneTask) {
+  dir = file("$buildDir/some-repo")
+  uri = 'git@github.com:palominolabs/gradle-git-clone-task-demo-repo.git'
+  treeish = 'v2' // a git hash, or tag name, or branch name
+}
 </pre>
         </p>
-<p>
-You may also define a more specific Jetty container with
-<ul>
-    <li><code>apply plugin: 'gretty7'</code></li>
-    <li><code>apply plugin: 'gretty8'</code></li>
-    <li><code>apply plugin: 'gretty9'</code></li>
-</ul>
-</p>
     </section>
 
     <footer>

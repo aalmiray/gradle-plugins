@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Gretty</title>
+    <title>Lesscss</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -38,22 +38,39 @@
                href="#summary"><span
                 class="octicon octicon-link"></span></a>Summary</h3>
 
-<p>
-Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/servlet-API-3.0 and jetty-9/servlet-API-3.1.0.
-</p>
+        <p>A gradle plugin for compiling LESS to CSS, compatible with <a href="http://lesscss.org/">less</a> v1.7.0<br/>
+        <em>Features:</em><br/>
+        The plugin is based on lesscss, which:<br/>
+        <ul>
+            <li>
+                can start a daemon that automatically compiles when the source is modified
+            </li>
+            <li>
+                caches information about imported source files to avoid unnecessary compilations
+            </li>
+            <li>
+                supports all LESS options
+            </li>
+            <li>
+                is the fastest Java based LESS compiler
+            </li>
+            <li>
+                supports multiple underlying engines: rhino, nashorn and node.js
+            </li>
+        </ul>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/akhikhl/gretty">https://github.com/akhikhl/gretty</a></td>
+                <td><a href="https://github.com/houbie/lesscss-gradle-plugin">https://github.com/houbie/lesscss-gradle-plugin</a></td>
             </tr>
             <tr>
                 <th>Author</th>
-                <td><a href="https://github.com/akhikhl">akhikhl</a></td>
+                <td><a href="https://github.com/houbie">houbie (Ivo Houbrechts)</a></td>
             </tr>
             <tr>
                 <th>Version</th>
-                <td>0.0.15</td>
+                <td>1.0.0-less-1.7.0</td>
             </tr>
             </tbody>
         </table>
@@ -61,27 +78,36 @@ Advanced gradle plugin for running web-apps on jetty-7/servlet-API-2.5, jetty-8/
         <h3><a name="usage" class="anchor"
                href="#usage"><span
                 class="octicon octicon-link"></span></a>Usage</h3>
-<p>Setting up Gretty:<br/>
+        <p>
 <pre>
 buildscript {
-    repositories { jcenter() }
+    repositories {
+        mavenCentral()
+    }
+
     dependencies {
-        classpath 'org.akhikhl.gretty:gretty-plugin:0.0.15'
+        classpath "com.github.houbie:lesscss-gradle-plugin:1.0.0-less-1.7.0"
     }
 }
 
-apply plugin: 'war'
-apply plugin: 'gretty'
+apply plugin: "lesscss"
+
+lessc {
+    sourceDir "customized/less", "standard/less"
+    include "**/*.less", "**/*.js"
+    exclude "imports/**/*"
+    destinationDir = "$buildDir/css"
+    options.sourceMap = true
+}
+
+lesscDaemon {
+    lesscTaskName = "customLesscTask" //When you defined additional lessc tasks. Default: 'lessc'
+    interval = 200 //Scan interval in milliseconds. Default: 500
+    engine = "commandline"
+    lesscExecutable = "/opt/local/bin/lessc"
+}
 </pre>
         </p>
-<p>
-You may also define a more specific Jetty container with
-<ul>
-    <li><code>apply plugin: 'gretty7'</code></li>
-    <li><code>apply plugin: 'gretty8'</code></li>
-    <li><code>apply plugin: 'gretty9'</code></li>
-</ul>
-</p>
     </section>
 
     <footer>
