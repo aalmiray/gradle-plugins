@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Bintray</title>
+    <title>GNU Make</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -39,13 +39,13 @@
                 class="octicon octicon-link"></span></a>Summary</h3>
 
         <p>
-This is the unoffical plugin for <a href="https://bintray.com/">Bintray</a>. <br/>
-It supports Maven & Ivy style uploads to Bintray Maven repositories, uploads to Generic Bintray repositories as well as signing of packages.<br/>
+This is plugin for calling GNU Make from Gradle. <br/>
+it's mian focus is for the migration of legacy builds<br/>
         <table border="0">
             <tbody>
             <tr>
                 <th>Website</th>
-                <td><a href="https://github.com/ysb33r/bintray">https://github.com/ysb33r/bintray</a></td>
+                <td><a href="https://github.com/ysb33r/Gradle/tree/master/gnumake">https://github.com/ysb33r/Gradle/tree/master/gnumake</a></td>
             </tr>
             <tr>
                 <th>Author</th>
@@ -53,7 +53,7 @@ It supports Maven & Ivy style uploads to Bintray Maven repositories, uploads to 
             </tr>
             <tr>
                 <th>Version</th>
-                <td>1.3</td>
+                <td>0.1</td>
             </tr>
             </tbody>
         </table>
@@ -63,45 +63,20 @@ It supports Maven & Ivy style uploads to Bintray Maven repositories, uploads to 
                 class="octicon octicon-link"></span></a>Usage</h3>
         <p>
 <pre>
+import org.ysb33r.gradle.gnumake.GnuMakeBuild
+
 buildscript {
-    repositories {
-        jcenter()
-      }
-      dependencies {
-        classpath 'org.ysb33r.gradle:bintray:1.3'
-      }
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.ysb33r.gradle:gnumake:0.1'
+  }
 }
 
-apply plugin: 'bintray-publish'
-apply plugin : 'java'
-
-// Publishing to Maven Repo using old-style maven
-uploadArchives  {
-    repositories {
- 		bintrayMavenDeployer {
-			username          'someBintrayUser'
-            apiKey            'SomeBintrayUsersApiKey'
-         	repoOwner         'ysb33r'
-         	repoName          'grysb33r'
-         	packageName       'someNewPackageToBePublished'
-            description       'This is an example to simplifying bintray publishing'
-            descUrl           'https://github.com/ysb33r/Gradle/blob/master/bintray/README.md'
-            tags              'gradle','bintray'
-       }
-    }
-}
-
-// Publishing to a generic repository
-import org.ysb33r.gradle.bintray.BintrayGenericUpload
-task uploadArchives (type:BintrayGenericUpload ) {
-    username    'someBintrayUser'
-    apiKey      'SomeBintrayUsersApiKey'
-    repoOwner   'ysb33r'
-    repoName    'nanook'
-    packageName 'someNewPackageToBePublished'
-
-    // 'sources' can be called more than once
-    sources "${buildDir}/distributions/${applicationName}-${version}.tar"
+task runMake (type:GnuMakeBuild) {
+  targets = ['build','install']
+  flags = [ DESTDIR : '/copy/files/here', BUILD_NUMBER : 12345 ]
 }
 </pre>
         </p>
