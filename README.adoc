@@ -1,5 +1,9 @@
 = Unofficial Gradle Plugin Portal
 
+!! *NO LONGER ACTIVE* !!
+
+See link:https://plugins.gradle.org/[] instead.
+
 == How to Contribute
 
  . Fork this repository.
